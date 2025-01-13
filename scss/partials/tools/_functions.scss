@@ -1,0 +1,9 @@
+//   --- function ---
+
+@function em($target, $content) {
+  @return calc(($target / $content) * 1em);
+}
+
+@function rem($target) {
+  @return calc(($target / 16) * 1rem);
+}

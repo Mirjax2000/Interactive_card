@@ -1,0 +1,57 @@
+@use "./variables" as *;
+@use "./functions" as foo;
+@use "./mixins" as mix;
+
+/* --- placeholders --- */
+
+%auto-margin {
+  margin-inline: auto;
+}
+
+%position-relative {
+  position: relative;
+}
+
+%position-absolute {
+  position: absolute;
+}
+
+// --- font weights ---
+
+%weight-400 {
+  font-weight: 400;
+}
+
+%weight-700 {
+  font-weight: 700;
+}
+
+// --- text ---
+%text-center {
+  text-align: center;
+}
+
+// --- flex ---
+%flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// --- width ---
+%width-full {
+  width: 100%;
+}
+
+//  --- rest ---
+%cursor-pointer {
+  cursor: pointer;
+}
+
+%no-selection {
+  user-select: none;
+}
+
+%border-none {
+  border: none;
+}

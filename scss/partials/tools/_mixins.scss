@@ -1,0 +1,54 @@
+@use "./variables" as *;
+@use "./functions" as *;
+
+//   --- Mixins ---
+
+@mixin box-sizing() {
+  box-sizing: inherit;
+}
+
+@mixin container($min, $max, $padding) {
+  width: clamp($min, 100%, $max);
+  padding: $padding;
+}
+
+@mixin selection($clr-bg-selection: black, $clr-selection: white) {
+  ::selection {
+    background-color: $clr-bg-selection;
+    color: $clr-selection;
+  }
+}
+
+@mixin flex($justify: center, $align: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+
+
+// --- visually-hidden ---
+@mixin black-hole {
+  clip-path: inset(50%);
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+  left: -9999px;
+  white-space: nowrap;
+}
+
+// mediaqueries max-width
+
+@mixin mq-default-max-width($width) {
+  @media only screen and (max-width: $width) {
+    @content;
+  }
+}
+
+// mediaqueries min-width
+@mixin mq-default-min-width($width) {
+  @media only screen and (min-width: $width) {
+    @content;
+  }
+}

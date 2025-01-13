@@ -1,0 +1,11 @@
+@use "../tools" as *;
+
+/* --- root css --- */
+
+:root {
+  --font-size: #{$font-size-100};
+  --font-size-headers: #{$font-size-headers-sm};
+  --font-size-inner: #{$font-size-inner-sm};
+  --font-size-cardnum: #{$font-size-cardnum-sm};
+  --font-size-cardname: #{$font-size-cardname-sm};
+}
