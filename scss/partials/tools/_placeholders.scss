@@ -55,3 +55,17 @@
 %border-none {
   border: none;
 }
+
+%card-styling-sm{
+  position:absolute;
+  width: 17.875em;
+  height: 9.8125em;
+  background: {
+    position: top left;
+    size: contain;
+    repeat: no-repeat;
+  }
+
+  box-shadow: 1px 1px 7px black;
+  border-radius: .5375em;
+}

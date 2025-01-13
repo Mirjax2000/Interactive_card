@@ -5,6 +5,7 @@
 .home {
   background-color: $clr-body;
   font-family: $font-family;
+  font-weight: 500;
 }
 
 .container {
@@ -16,6 +17,7 @@
   @extend %width-full;
   @extend %position-relative;
 
+  color:white;
   min-height: 15em;
   background: $linear-gradient;
   background: {
@@ -23,6 +25,36 @@
     position: top left;
     size: cover;
     repeat: no-repeat;
+    isolation: isolate;
   };
+
+  &__back{
+    @extend %card-styling-sm;
+
+    top: 2em;
+    right: 1em;
+    background-image:url('#{$img-path}/bg-card-back.png');
+    z-index: 10;
+
+    &--cvc{
+      @extend %position-absolute;
   
+      width: 3ch;
+      height: fit-content;
+      top:em(73,9) ;
+      right: em(37,9);
+      letter-spacing: 1.2857px;
+      line-height: 11px;
+      font-size: var(--font-size-cvc);
+    }
+  }
+
+  &__front{
+    @extend %card-styling-sm;
+
+    top: 7.6em;
+    left: 1em;
+    background-image:url('#{$img-path}/bg-card-front.png');
+    z-index: 20;
+  }
  }

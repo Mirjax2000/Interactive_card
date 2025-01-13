@@ -2,6 +2,7 @@
 :root {
   --font-size: 100%;
   --font-size-headers: 0.75rem;
+  --font-size-cvc: 0.5625rem;
   --font-size-inner: 1.125rem;
   --font-size-cardnum: 1.125rem;
   --font-size-cardname: 0.5625rem;
@@ -203,8 +204,23 @@ input {
   position: relative;
 }
 
+.gradient__back--cvc {
+  position: absolute;
+}
+
 .gradient {
   width: 100%;
+}
+
+.gradient__back, .gradient__front {
+  position: absolute;
+  width: 17.875em;
+  height: 9.8125em;
+  background-position: top left;
+  background-size: contain;
+  background-repeat: no-repeat;
+  box-shadow: 1px 1px 7px black;
+  border-radius: 0.5375em;
 }
 
 /* --- header --- */
@@ -212,6 +228,7 @@ input {
 .home {
   background-color: #fff;
   font-family: grotesk, serif;
+  font-weight: 500;
 }
 
 .container {
@@ -220,12 +237,35 @@ input {
 }
 
 .gradient {
+  color: white;
   min-height: 15em;
   background: linear-gradient(15deg, #21092f 28%, #2a2858 50%, #4c2037 85%);
   background-image: url("../assets/img/bg-main-mobile.png");
   background-position: top left;
   background-size: cover;
   background-repeat: no-repeat;
+  background-isolation: isolate;
+}
+.gradient__back {
+  top: 2em;
+  right: 1em;
+  background-image: url("../assets/img/bg-card-back.png");
+  z-index: 10;
+}
+.gradient__back--cvc {
+  width: 3ch;
+  height: fit-content;
+  top: 8.1111111111em;
+  right: 4.1111111111em;
+  letter-spacing: 1.2857px;
+  line-height: 11px;
+  font-size: var(--font-size-cvc);
+}
+.gradient__front {
+  top: 7.6em;
+  left: 1em;
+  background-image: url("../assets/img/bg-card-front.png");
+  z-index: 20;
 }
 
 /* --- footer --- */
