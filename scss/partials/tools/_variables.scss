@@ -6,14 +6,12 @@ $debug: false;
 
 // --- color pallet ---
 $clr10: #fff;
-$clr11: hsl(0, 100%, 66%);
-$clr12: hsl(270, 3%, 87%);
-$clr13: hsl(279, 6%, 55%);
-$clr14: hsl(278, 68%, 11%);
-
-
+$clr11: #ff5252;
+$clr12: #dedddf;
+$clr13: #8e8593;
+$clr14: #21092f;
 $clr99: #505050;
-$linear-gradient: linear-gradient(hsl(249, 99%, 64%) to hsl(278, 94%, 30%));
+$linear-gradient: linear-gradient(#6448fe to #600594);
 
 // -----------------------
 
@@ -37,15 +35,15 @@ $bp-min: 650px;
 $bp-mni: $min-width;
 
 // --- font-global ---
-$font-karla: Grotesk;
+$font-family: grotesk, serif;
 $font-size-110: 110%;
 $font-size-100: 100%;
 $font-size-90: 90%;
 $font-size-80: 80%;
 
 // --- font-local ---
-$font-size-headers-sm: .75rem; // 12px
-$font-size-headers-lg: .75rem; // 12px
+$font-size-headers-sm: 0.75rem; // 12px
+$font-size-headers-lg: 0.75rem; // 12px
 
 $font-size-inner-sm: 1.125rem; // 18px
 $font-size-inner-lg: 1.125rem; // 18px
@@ -53,13 +51,8 @@ $font-size-inner-lg: 1.125rem; // 18px
 $font-size-cardnum-sm: 1.125rem; // 18px
 $font-size-cardnum-lg: 1.75rem; // 28px
 
-$font-size-cardname-sm: .5625rem; // 9px
-$font-size-cardname-lg: .875rem; // 14px
-
-
-
-
-
+$font-size-cardname-sm: 0.5625rem; // 9px
+$font-size-cardname-lg: 0.875rem; // 14px
 
 // --- aray ---
 $pages: home, gallery, blog, contact, buttons;

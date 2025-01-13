@@ -105,7 +105,7 @@ button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
-  appearance: button;
+  appearance: "button";
 }
 
 ::-moz-focus-inner {
@@ -144,7 +144,7 @@ progress {
 }
 
 ::-webkit-file-upload-button {
-  appearance: button;
+  appearance: 'button';
   font: inherit;
 }
 

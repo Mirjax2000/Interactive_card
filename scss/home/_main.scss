@@ -4,12 +4,10 @@
 /* --- home main --- */
 .home {
   background-color: $clr-body;
-  font-family: $font-karla, serif;
-  color: $clr15;
+  font-family: $font-family;
 }
 
 .container {
   @include container($min-width, $max-width, 1em);
   @extend %auto-margin;
-  @extend %position-relative;
 }

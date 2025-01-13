@@ -8,6 +8,7 @@
     "watch:sass": "sass --watch scss/home:css",
     "build:ts": "tsc",
     "watch:ts": "tsc --watch",
+    "live:server": "live-server",
     "work": "live-server && npm run watch:sass && npm run watch:ts"
   },
   "author": "Miroslav Viktorin",
