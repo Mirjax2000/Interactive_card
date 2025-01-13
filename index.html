@@ -1,66 +1,85 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Card details</title>
-    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-    <meta content="" name="description" />
-    <meta content="" name="keywords" />
-    <meta content="Miroslav Viktorin" name="author" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <link
-      as="font"
-      crossorigin="anonymous"
-      href="./assets/webfonts/Font-face/static/SpaceGrotesk-Medium.woff2"
-      rel="preload"
-      type="font/woff2"
-    />
-    <link
-      href="./assets/img/favicon-32x32.png"
-      rel="shortcut icon"
-      type="image/x-icon"
-    />
-    <style>
-      @font-face {
-        font-family: Grotesk;
-        src:
-          url("./assets/webfonts/Font-face/static/SpaceGrotesk-Medium.woff2")
-            format("woff2"),
-          url("./assets/webfonts/Font-face/static/SpaceGrotesk-Medium.ttf")
-            format("truetype");
-        font-weight: 500;
-        font-style: normal;
-        font-display: swap;
-      }
-    </style>
+<head>
+  <meta charset="UTF-8" />
+  <title>Card details</title>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="" name="description" />
+  <meta content="" name="keywords" />
+  <meta content="Miroslav Viktorin" name="author" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <link href="./css/home.css" rel="stylesheet" />
-  </head>
-  <!--body-->
-  <body class="home">
-    <div class="container">
-      <section class="submit__card">
-        <div class="gradient"></div>
-        <form action="/submit-card" id="form" class="form" method="post">
-          <div class="form__wrapper">
-            <label for="name">CARDHOLDER NAME</label>
-            <input class="form__name" id="name" type="text" />
-          </div>
-          <div class="from__wrapper">
-            <label for="number">CARD NUMBER</label>
-            <input class="form__number" id="number" type="number" />
-          </div>
-          <div class="form__wraper">
-            <label for="month">EXP.DATE(MM/YY) CVC</label>
-            <input class="form__month" id="month" type="number" />
-            <input class="form__year" id="year" type="number" />
-            <input class="form__cvc" id="cvc" type="number" />
-          </div>
-        </form>
-      </section>
-    </div>
+  <link as="font" crossorigin="anonymous" href="./assets/webfonts/Font-face/static/SpaceGrotesk-Medium.woff2"
+    rel="preload" type="font/woff2" />
+  <link href="./assets/img/favicon-32x32.png" rel="shortcut icon" type="image/x-icon" />
+  <style>
+    @font-face {
+      font-family: Grotesk;
+      src:
+        url("./assets/webfonts/Font-face/static/SpaceGrotesk-Medium.woff2") format("woff2"),
+        url("./assets/webfonts/Font-face/static/SpaceGrotesk-Medium.ttf") format("truetype");
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+  </style>
 
-    <script src="js/script.js"></script>
-  </body>
+  <link href="./css/home.css" rel="stylesheet" />
+</head>
+<!--body-->
+
+<body class="home">
+  <div class="container">
+    <section class="submit__card">
+      <!-- gradient -->
+      <div class="gradient">
+        <div class="gradient__back">
+          <p class="gradient__back--csv" id="cardCsv">000</p>
+        </div>
+        <div class="gradient__front">
+          <p class="gradient__front--number" id="cardNumber">0000 0000 0000 0000</p>
+          <div class="flex">
+            <p class="gradient__front--name" id="cardName">JANE APPLESEED</p>
+            <p class="gradient__front--expire" id="cardExp">00/00</p>
+          </div>
+        </div>
+      </div>
+      <!-- form -->
+      <form action="/submit-card" id="form" class="form" method="post">
+        <!-- card name -->
+        <div class="form__wrapper">
+          <label class="form__label label--name" for="name">CARDHOLDER NAME</label>
+          <input class="form__name" id="name" type="text" />
+          <div class="form__error">ERROR</div>
+        </div>
+        <!-- card number -->
+        <div class="from__wrapper">
+          <label class="form__label label--number" for="number">CARD NUMBER</label>
+          <input class="form__number" id="number" type="number" />
+          <div class="form__error">ERROR</div>
+        </div>
+        <!-- card date -->
+        <div class="form__wraper">
+          <label class="form__label label--month" for="month">EXP.DATE(MM/YY) CVC</label>
+          <input class="form__month" id="month" type="number" />
+          <div class="form__error">ERROR</div>
+
+          <label class="form__label label--year" for="year">Year</label>
+          <input class="form__year" id="year" type="number" />
+
+          <label class="form__label label--cvc" for="cvc">CVC</label>
+          <input class="form__cvc" id="cvc" type="number" />
+          <div class="form__error">ERROR</div>
+        </div>
+        <button class="form__submit" type="submit" id="submit">
+          Confirm
+        </button>
+      </form>
+    </section>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+
 </html>

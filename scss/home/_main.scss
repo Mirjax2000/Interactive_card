@@ -11,3 +11,18 @@
   @include container($min-width, $max-width, 1em);
   @extend %auto-margin;
 }
+
+.gradient {
+  @extend %width-full;
+  @extend %position-relative;
+
+  min-height: 15em;
+  background: $linear-gradient;
+  background: {
+    image:url('#{$img-path}/bg-main-mobile.png');
+    position: top left;
+    size: cover;
+    repeat: no-repeat;
+  };
+  
+ }
