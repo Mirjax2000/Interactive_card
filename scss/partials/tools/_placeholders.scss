@@ -8,6 +8,10 @@
   margin-inline: auto;
 }
 
+%display-block{
+  display: block;
+}
+
 %position-relative {
   position: relative;
 }
@@ -31,11 +35,18 @@
   text-align: center;
 }
 
+%text-shadow {
+  text-shadow: 1px 1px 1px black;
+}
+
 // --- flex ---
 %flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+%flex-1{
+  flex: 1;
 }
 
 // --- width ---
@@ -43,7 +54,7 @@
   width: 100%;
 }
 
-//  --- rest ---
+// --- rest ---
 %cursor-pointer {
   cursor: pointer;
 }
@@ -57,7 +68,6 @@
 }
 
 %card-styling-sm{
-  position:absolute;
   width: 17.875em;
   height: 9.8125em;
   background: {
@@ -69,3 +79,10 @@
   box-shadow: 1px 1px 7px black;
   border-radius: .5375em;
 }
+
+%card-marks{
+  aspect-ratio: 1/1;
+  content: "";
+  border-radius: 50%;
+}
+

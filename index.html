@@ -32,46 +32,55 @@
 <body class="home">
   <div class="container">
     <section class="submit__card">
-      <!-- gradient -->
-      <div class="gradient">
-        <div class="gradient__back">
-          <p class="gradient__back--cvc" id="cardCvc">000</p>
+      <!-- card -->
+      <div class="card">
+        <div class="card__back">
+          <p class="card__back--cvc" id="cardCvc">000</p>
         </div>
-        <div class="gradient__front">
-          <p class="gradient__front--number" id="cardNumber">0000 0000 0000 0000</p>
-          <div class="flex">
-            <p class="gradient__front--name" id="cardName">JANE APPLESEED</p>
-            <p class="gradient__front--expire" id="cardExp">00/00</p>
+        <div class="card__front">
+          <p class="card__front--number" id="cardNumber">
+            0000 0000 0000 0000
+          </p>
+          <div class="card__front--flex">
+            <p class="card__front--name" id="cardName">FRANTA PÍNA</p>
+            <p class="card__front--expire" id="cardExp">00/00</p>
           </div>
         </div>
       </div>
       <!-- form -->
       <form action="/submit-card" id="form" class="form" method="post">
         <!-- card name -->
-        <div class="form__wrapper">
-          <label class="form__label label--name" for="name">CARDHOLDER NAME</label>
-          <input class="form__name" id="name" type="text" />
-          <div class="form__error">ERROR</div>
-        </div>
+        <label class="form__label" for="name">CARDHOLDER NAME</label>
+        <input class="form__input" id="name" type="text" placeholder="e.g. Franta Pína" />
+        <div class="form__error">ERROR</div>
         <!-- card number -->
-        <div class="from__wrapper">
-          <label class="form__label label--number" for="number">CARD NUMBER</label>
-          <input class="form__number" id="number" type="number" />
-          <div class="form__error">ERROR</div>
-        </div>
+        <label class="form__label" for="number">CARD NUMBER</label>
+        <input class="form__input" id="number" type="number" placeholder="e.g. 1234 5678 9123 000" />
+        <div class="form__error">ERROR</div>
         <!-- card date -->
-        <div class="form__wraper">
-          <label class="form__label label--month" for="month">EXP.DATE(MM/YY) CVC</label>
-          <input class="form__month" id="month" type="number" />
-          <div class="form__error">ERROR</div>
-
-          <label class="form__label label--year" for="year">Year</label>
-          <input class="form__year" id="year" type="number" />
-
-          <label class="form__label label--cvc" for="cvc">CVC</label>
-          <input class="form__cvc" id="cvc" type="number" />
-          <div class="form__error">ERROR</div>
+        <div class="form__wrapper">
+          <div class="form__wrapper__date">
+            <!-- month -->
+            <div class="form__wrapper__date--month">
+              <label class="form__label" for="month">EXP.DATE(MM/YY)</label>
+              <input class="form__input" id="month" type="number" placeholder="MM" />
+              <div class="form__error">ERROR</div>
+            </div>
+            <!-- year -->
+            <div class="form__wrapper__date--year">
+              <label class="form__label" for="year">Year</label>
+              <input class="form__input" id="year" type="number" placeholder="YY" />
+              <div class="form__error">ERROR</div>
+            </div>
+          </div>
+          <!-- card cvc -->
+          <div class="form__wrapper__cvc">
+            <label class="form__label" for="cvc">CVC</label>
+            <input class="form__input" id="cvc" type="number" placeholder="e.g. 123" />
+            <div class="form__error">ERROR</div>
+          </div>
         </div>
+        <!-- submit -->
         <button class="form__submit" type="submit" id="submit">
           Confirm
         </button>

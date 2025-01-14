@@ -1,11 +1,13 @@
 /* --- root css --- */
 :root {
   --font-size: 100%;
-  --font-size-headers: 0.75rem;
+  --font-size-label: 0.75rem;
   --font-size-cvc: 0.5625rem;
   --font-size-inner: 1.125rem;
   --font-size-cardnum: 1.125rem;
   --font-size-cardname: 0.5625rem;
+  --font-size-error: 0.75rem;
+  --font-size-submit: 1.125rem;
 }
 
 /* --- normalize css --- */
@@ -195,25 +197,54 @@ input {
   font-display: swap;
 }
 /* --- general settings --- */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 /* --- placeholders --- */
-.container {
+.container, .form__submit {
   margin-inline: auto;
 }
 
-.gradient {
+.form__input, .form__label {
+  display: block;
+}
+
+.card, .form__wrapper__date {
   position: relative;
 }
 
-.gradient__back--cvc {
+.card__back, .card__back--cvc, .card__front, .card__front::before, .card__front::after, .card__front--number, .card__front--flex, .form__wrapper__date--month .form__label {
   position: absolute;
 }
 
-.gradient {
+.card__front--number, .card__front--flex {
+  text-shadow: 1px 1px 1px black;
+}
+
+.form__wrapper__date, .form__wrapper__date--month, .form__wrapper__date--year, .form__wrapper__cvc {
+  flex: 1;
+}
+
+.card, .card__front--number, .card__front--flex, .form, .form__input, .form__submit {
   width: 100%;
 }
 
-.gradient__back, .gradient__front {
-  position: absolute;
+.form__input, .form__submit {
+  cursor: pointer;
+}
+
+.card {
+  user-select: none;
+}
+
+.card__back, .card__front {
   width: 17.875em;
   height: 9.8125em;
   background-position: top left;
@@ -223,10 +254,16 @@ input {
   border-radius: 0.5375em;
 }
 
+.card__front::before, .card__front::after {
+  aspect-ratio: 1/1;
+  content: "";
+  border-radius: 50%;
+}
+
 /* --- header --- */
 /* --- home main --- */
 .home {
-  background-color: #fff;
+  background-color: #dedddf;
   font-family: grotesk, serif;
   font-weight: 500;
 }
@@ -234,9 +271,18 @@ input {
 .container {
   width: clamp(23.4375em, 100%, 90em);
   padding: 1em;
+  background-color: #fff;
 }
 
-.gradient {
+.submit__card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 2.8125em;
+}
+
+.card {
   color: white;
   min-height: 15em;
   background: linear-gradient(15deg, #21092f 28%, #2a2858 50%, #4c2037 85%);
@@ -246,26 +292,111 @@ input {
   background-repeat: no-repeat;
   background-isolation: isolate;
 }
-.gradient__back {
+.card__back {
   top: 2em;
   right: 1em;
   background-image: url("../assets/img/bg-card-back.png");
   z-index: 10;
 }
-.gradient__back--cvc {
-  width: 3ch;
-  height: fit-content;
+.card__back--cvc {
+  font-size: var(--font-size-cvc);
   top: 8.1111111111em;
   right: 4.1111111111em;
-  letter-spacing: 1.2857px;
-  line-height: 11px;
-  font-size: var(--font-size-cvc);
+  letter-spacing: 0.1428555556em;
+  line-height: 1.2222222222em;
 }
-.gradient__front {
+.card__front {
   top: 7.6em;
   left: 1em;
   background-image: url("../assets/img/bg-card-front.png");
   z-index: 20;
+}
+.card__front::before {
+  width: 1.875em;
+  top: 1.125em;
+  left: 1.1875em;
+  background-color: #fff;
+}
+.card__front::after {
+  width: 0.875em;
+  top: 1.625em;
+  left: 3.75em;
+  border: 1px solid white;
+}
+.card__front--number {
+  font-size: var(--font-size-cardnum);
+  padding-inline: 1.0555555556em 1.5em;
+  letter-spacing: 0.1111111111em;
+  bottom: 2.7777777778em;
+}
+.card__front--flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-size-cardname);
+  bottom: 2.2222222222em;
+  padding-inline: 2.1111111111em 2.2222222222em;
+  letter-spacing: 0.1428555556em;
+}
+
+.form {
+  margin-top: 5.625em;
+  padding-inline: 1.5em;
+}
+.form__input {
+  font-size: var(--font-size-inner);
+  padding: 0.6111111111em 0.8888888889em;
+  color: #21092f;
+  border-radius: 0.4444444444em;
+  outline: 1px solid #cec8d2;
+  line-height: 1.2777777778em;
+}
+.form__input::placeholder {
+  color: #cec8d2;
+}
+.form__label {
+  font-size: var(--font-size-label);
+  color: #21092f;
+  margin-bottom: 0.75em;
+  text-transform: uppercase;
+  letter-spacing: 0.1666666667em;
+  line-height: 1.25em;
+}
+.form__error {
+  font-size: var(--font-size-error);
+  color: #ff5252;
+  color: transparent;
+  margin-block: 0.4166666667em 0.25em;
+}
+.form__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6875em;
+}
+.form__wrapper__date {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 0.5em;
+}
+.form__wrapper__date--month .form__label {
+  top: 0;
+  left: 0;
+}
+.form__wrapper__date--year .form__label, .form__wrapper__date--year .form__error {
+  text-indent: -9999px;
+  color: transparent;
+}
+.form__submit {
+  font-size: var(--font-size-submit);
+  margin-top: 0.5555555556em;
+  padding-block: 0.8333333333em;
+  background-color: #21092f;
+  color: #fff;
+  border: none;
+  border-radius: 0.4444444444em;
+  line-height: 1.2777777778em;
 }
 
 /* --- footer --- */
