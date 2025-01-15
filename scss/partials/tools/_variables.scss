@@ -29,7 +29,7 @@ $clr-bg-img: $clr99;
 
 // --- width ---
 $max-width: foo.em(1440, 16);
-$min-width: foo.em(375, 16);
+$min-width: foo.em(380, 16);
 
 // --- break points ---
 $bp-max: $max-width;
@@ -50,7 +50,7 @@ $font-size-label-sm: 0.75rem; // 12px
 $font-size-label-lg: 0.75rem; // 12px
 
 $font-size-inner-sm: 1.125rem; // 18px
-$font-size-inner-sm: 1.125rem; // 18px
+$font-size-inner-lg: 1.125rem; // 18px
 
 $font-size-submit-sm: 1.125rem; // 18px
 $font-size-submit-lg: 1.125rem; // 18px
@@ -68,6 +68,16 @@ $font-size-cardnum-lg: 1.75rem; // 28px
 
 $font-size-cardname-sm: 0.5625rem; // 9px
 $font-size-cardname-lg: 0.875rem; // 14px
+// -----------------------------
+// - thank-you -
+$font-size-thank-you-sm: 1.125rem; // 18px
+$font-size-thank-you-lg: 1.75rem; // 28px
+
+$font-size-content-sm: 1.125rem; // 18px
+$font-size-content-lg: 1.125rem; // 18px
+
+$font-size-continue-sm: 1.125rem; // 18px
+$font-size-continue-lg: 1.125rem; // 18px
 // -----------------------------
 
 // --- aray ---

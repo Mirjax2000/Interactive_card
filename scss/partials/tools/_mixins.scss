@@ -29,11 +29,11 @@
 
 // --- visually-hidden ---
 @mixin black-hole {
+  position: absolute;
   clip-path: inset(50%);
   width: 0;
   height: 0;
   overflow: hidden;
-  position: absolute;
   left: -9999px;
   white-space: nowrap;
 }

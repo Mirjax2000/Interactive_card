@@ -1,6 +1,8 @@
-@use "../tools" as *;
+@use "../tools/variables" as *;
 
 /* --- root css --- */
+
+/* --- mobile --- */
 
 :root {
   --font-size: #{$font-size-100};
@@ -11,4 +13,7 @@
   --font-size-cardname: #{$font-size-cardname-sm};
   --font-size-error: #{$font-size-error-sm};
   --font-size-submit: #{$font-size-submit-sm};
+  --font-size-thank-you: #{$font-size-thank-you-sm};
+  --font-size-content: #{$font-size-content-sm};
+  --font-size-continue: #{$font-size-continue-sm};
 }

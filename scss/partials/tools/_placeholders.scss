@@ -39,6 +39,31 @@
   text-shadow: 1px 1px 1px black;
 }
 
+
+
+%text-color10 {
+  color: $clr10;
+}
+%text-color13 {
+  color: $clr13;
+}
+
+%text-color14 {
+  color: $clr14;
+}
+
+%bck-color10 {
+  background-color: $clr10;
+}
+
+%bck-color14 {
+  background-color: $clr14;
+}
+%bck-black {
+  background-color:black;
+}
+
+
 // --- flex ---
 %flex-center {
   display: flex;
@@ -67,6 +92,10 @@
   border: none;
 }
 
+%border-radius {
+  border-radius: 8px;
+}
+
 %card-styling-sm{
   width: 17.875em;
   height: 9.8125em;
@@ -76,7 +105,7 @@
     repeat: no-repeat;
   }
 
-  box-shadow: 1px 1px 7px black;
+  box-shadow: 1px 1px 3px #00000075;
   border-radius: .5375em;
 }
 
@@ -84,5 +113,12 @@
   aspect-ratio: 1/1;
   content: "";
   border-radius: 50%;
+}
+
+%shadow-box3{
+  box-shadow: 1px 1px 3px black
+}
+%shadow-box2{
+  box-shadow: 1px 1px 2px black
 }
 

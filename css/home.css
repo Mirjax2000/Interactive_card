@@ -1,4 +1,5 @@
 /* --- root css --- */
+/* --- mobile --- */
 :root {
   --font-size: 100%;
   --font-size-label: 0.75rem;
@@ -8,6 +9,9 @@
   --font-size-cardname: 0.5625rem;
   --font-size-error: 0.75rem;
   --font-size-submit: 1.125rem;
+  --font-size-thank-you: 1.125rem;
+  --font-size-content: 1.125rem;
+  --font-size-continue: 1.125rem;
 }
 
 /* --- normalize css --- */
@@ -208,19 +212,19 @@ input[type=number] {
 }
 
 /* --- placeholders --- */
-.container, .form__submit {
+.container, .submit__card, .card__wrapper, .form__wrapper, .form__submit, .thank-you__wrapper, .thank-you__accept {
   margin-inline: auto;
 }
 
-.form__input, .form__label {
+.form__label, .thank-you__continue {
   display: block;
 }
 
-.card, .form__wrapper__date {
+.card__wrapper, .form__credential__date {
   position: relative;
 }
 
-.card__back, .card__back--cvc, .card__front, .card__front::before, .card__front::after, .card__front--number, .card__front--flex, .form__wrapper__date--month .form__label {
+.card__back, .card__back--cvc, .card__front, .card__front::before, .card__front::after, .card__front--number, .card__front--flex, .form__credential__date--month .form__label {
   position: absolute;
 }
 
@@ -228,11 +232,35 @@ input[type=number] {
   text-shadow: 1px 1px 1px black;
 }
 
-.form__wrapper__date, .form__wrapper__date--month, .form__wrapper__date--year, .form__wrapper__cvc {
+.card, .form__submit, .thank-you__continue {
+  color: #fff;
+}
+
+.thank-you__content {
+  color: #8e8593;
+}
+
+.form__input, .form__label, .thank-you__title {
+  color: #21092f;
+}
+
+.container, .card__front::before {
+  background-color: #fff;
+}
+
+.form__submit, .thank-you__continue {
+  background-color: #21092f;
+}
+
+.form__submit:hover, .form__submit:focus, .form__submit:active, .thank-you__continue:hover, .thank-you__continue:focus, .thank-you__continue:active {
+  background-color: black;
+}
+
+.form__credential__date, .form__credential__date--month, .form__credential__date--year, .form__credential__cvc {
   flex: 1;
 }
 
-.card, .card__front--number, .card__front--flex, .form, .form__input, .form__submit {
+.card, .card__front--number, .card__front--flex, .form, .form__input, .form__submit, .thank-you {
   width: 100%;
 }
 
@@ -240,8 +268,12 @@ input[type=number] {
   cursor: pointer;
 }
 
-.card {
+.card, .thank-you__title, .thank-you__content {
   user-select: none;
+}
+
+.thank-you__continue {
+  border-radius: 8px;
 }
 
 .card__back, .card__front {
@@ -250,7 +282,7 @@ input[type=number] {
   background-position: top left;
   background-size: contain;
   background-repeat: no-repeat;
-  box-shadow: 1px 1px 7px black;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4588235294);
   border-radius: 0.5375em;
 }
 
@@ -258,6 +290,14 @@ input[type=number] {
   aspect-ratio: 1/1;
   content: "";
   border-radius: 50%;
+}
+
+.form__submit, .thank-you__continue {
+  box-shadow: 1px 1px 3px black;
+}
+
+.form__submit:active, .thank-you__continue:active {
+  box-shadow: 1px 1px 2px black;
 }
 
 /* --- header --- */
@@ -268,29 +308,40 @@ input[type=number] {
   font-weight: 500;
 }
 
+.black-hole {
+  position: absolute;
+  clip-path: inset(50%);
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  left: -9999px;
+  white-space: nowrap;
+}
+
 .container {
-  width: clamp(23.4375em, 100%, 90em);
-  padding: 1em;
-  background-color: #fff;
+  width: clamp(23.75em, 100%, 90em);
+  padding: 0;
 }
 
 .submit__card {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  height: 100svh;
   flex-direction: column;
-  padding-bottom: 2.8125em;
 }
 
 .card {
-  color: white;
   min-height: 15em;
   background: linear-gradient(15deg, #21092f 28%, #2a2858 50%, #4c2037 85%);
   background-image: url("../assets/img/bg-main-mobile.png");
   background-position: top left;
   background-size: cover;
   background-repeat: no-repeat;
-  background-isolation: isolate;
+}
+.card__wrapper {
+  max-width: 31.25em;
+  height: 100%;
 }
 .card__back {
   top: 2em;
@@ -306,7 +357,7 @@ input[type=number] {
   line-height: 1.2222222222em;
 }
 .card__front {
-  top: 7.6em;
+  bottom: -2.4em;
   left: 1em;
   background-image: url("../assets/img/bg-card-front.png");
   z-index: 20;
@@ -315,7 +366,6 @@ input[type=number] {
   width: 1.875em;
   top: 1.125em;
   left: 1.1875em;
-  background-color: #fff;
 }
 .card__front::after {
   width: 0.875em;
@@ -341,22 +391,28 @@ input[type=number] {
 
 .form {
   margin-top: 5.625em;
-  padding-inline: 1.5em;
+}
+.form__wrapper {
+  max-width: 23.75em;
 }
 .form__input {
   font-size: var(--font-size-inner);
+  line-height: 1.2777777778em;
   padding: 0.6111111111em 0.8888888889em;
-  color: #21092f;
   border-radius: 0.4444444444em;
   outline: 1px solid #cec8d2;
-  line-height: 1.2777777778em;
 }
 .form__input::placeholder {
   color: #cec8d2;
 }
+.form__input:focus {
+  outline: 1px solid #6348FE;
+}
+.form__input.error {
+  outline: 1px solid #ff5252;
+}
 .form__label {
   font-size: var(--font-size-label);
-  color: #21092f;
   margin-bottom: 0.75em;
   text-transform: uppercase;
   letter-spacing: 0.1666666667em;
@@ -365,26 +421,31 @@ input[type=number] {
 .form__error {
   font-size: var(--font-size-error);
   color: #ff5252;
-  color: transparent;
   margin-block: 0.4166666667em 0.25em;
 }
-.form__wrapper {
+.form__error[data-visible=false] {
+  color: transparent;
+}
+.form__error[data-visible=true] {
+  color: #ff5252;
+}
+.form__credential {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 0.6875em;
 }
-.form__wrapper__date {
+.form__credential__date {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   gap: 0.5em;
 }
-.form__wrapper__date--month .form__label {
+.form__credential__date--month .form__label {
   top: 0;
   left: 0;
 }
-.form__wrapper__date--year .form__label, .form__wrapper__date--year .form__error {
+.form__credential__date--year .form__label, .form__credential__date--year .form__error {
   text-indent: -9999px;
   color: transparent;
 }
@@ -392,14 +453,112 @@ input[type=number] {
   font-size: var(--font-size-submit);
   margin-top: 0.5555555556em;
   padding-block: 0.8333333333em;
-  background-color: #21092f;
-  color: #fff;
   border: none;
   border-radius: 0.4444444444em;
   line-height: 1.2777777778em;
+  transition: 0.1s ease-in-out transform, 0.1s ease-in-out background-color;
+}
+.form__submit:active {
+  transform: translateY(1px);
+}
+
+.thank-you {
+  text-align: center;
+  margin-top: 5.625em;
+}
+.thank-you__wrapper {
+  max-width: 23.75em;
+}
+.thank-you__accept {
+  width: 5em;
+  margin-bottom: 2.1875em;
+  aspect-ratio: 1/1;
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("../assets/img/icon-complete.svg");
+}
+.thank-you__title {
+  font-size: var(--font-size-thank-you);
+  margin-bottom: 1.6111111111em;
+  line-height: 1.2777777778em;
+}
+.thank-you__content {
+  font-size: var(--font-size-content);
+  line-height: 1.2777777778em;
+  margin-bottom: 2.6666666667em;
+}
+.thank-you__continue {
+  font-size: var(--font-size-continue);
+  line-height: 1.2777777778em;
+  padding-block: 0.8333333333em;
+  transition: 0.1s ease-in-out transform, 0.1s ease-in-out background-color;
+}
+.thank-you__continue:active {
+  transform: translateY(1px);
 }
 
 /* --- footer --- */
 /* --- media queries --- */
+@media only screen and (min-width: 68.8125em) {
+  /* --- root css --- */
+  /* --- desktop --- */
+  :root {
+    --font-size: 100%;
+    --font-size-label: 0.75rem;
+    --font-size-cvc: 0.875rem;
+    --font-size-inner: 1.125rem;
+    --font-size-cardnum: 1.75rem;
+    --font-size-cardname: 0.875rem;
+    --font-size-error: 0.75rem;
+    --font-size-submit: 1.125rem;
+    --font-size-thank-you: 1.75rem;
+    --font-size-content: 1.125rem;
+    --font-size-continue: 1.125rem;
+  }
+  .submit__card {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .submit__card .card {
+    flex: 1;
+    height: 100svh;
+    background-image: url("../assets/img/bg-main-desktop.png");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .submit__card .card__wrapper {
+    height: 32.5em;
+    width: 100%;
+  }
+  .submit__card .card__back, .submit__card .card__front {
+    width: 27.9375em;
+    height: 15.3125em;
+    inset: auto;
+  }
+  .submit__card .card__back {
+    right: -40%;
+    bottom: 0;
+  }
+  .submit__card .card__front {
+    right: -25%;
+    top: 0;
+  }
+  .submit__card .form, .submit__card .thank-you {
+    flex: 2;
+    margin-top: 0;
+  }
+}
+@media only screen and (min-width: 81.3125em) {
+  .submit__card .card__back {
+    right: -40%;
+    bottom: 0;
+  }
+  .submit__card .card__front {
+    right: -25%;
+    top: 0;
+  }
+}
 
 /*# sourceMappingURL=home.css.map */
