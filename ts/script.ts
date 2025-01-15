@@ -14,6 +14,7 @@
 
     formName.addEventListener('input', (e) => {
       let name: string = formName.value.replace(/[^a-zA-Z\s]/g, '');
+      name = name.replace(/\s+/g, ' ');
       let temp: string = '';
     
       for (let index = 0; index < name.length && index <= 25; index++) {
