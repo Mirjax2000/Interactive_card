@@ -2,8 +2,13 @@
 (() => {
     const cardCvc = document.getElementById('cardCvc'), cardNumber = document.getElementById('cardNumber'), cardName = document.getElementById('cardName'), cardExp = document.getElementById('cardExp'), form = document.getElementById('form'), formName = document.getElementById('formName'), formNumber = document.getElementById('formNumber'), formMonth = document.getElementById('formMonth'), formYear = document.getElementById('formYear'), formCvc = document.getElementById('formCvc'), formSubmit = document.getElementById('formSubmit');
     formName.addEventListener('input', (e) => {
-        let name = formName.value;
-        cardName.innerText = name;
+        let name = formName.value.replace(/[^a-zA-Z\s]/g, '');
+        let temp = '';
+        for (let index = 0; index < name.length && index <= 25; index++) {
+            temp += name[index];
+        }
+        cardName.innerText = temp;
+        formName.value = temp;
     });
     formNumber.addEventListener('input', (e) => {
         let number = formNumber.value.replace(/\D/g, ''); // Odstraní všechny nečíselné znaky
@@ -13,7 +18,6 @@
                 temp += ' ';
             }
             temp += number[index];
-            console.log(number[index]);
         }
         cardNumber.innerText = temp;
         formNumber.value = temp;
