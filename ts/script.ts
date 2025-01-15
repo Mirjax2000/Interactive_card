@@ -19,17 +19,18 @@
 
   formNumber.addEventListener('input', (e) => {
     let number: string = formNumber.value.replace(/\D/g, ''); // Odstraní všechny nečíselné znaky
-    let formattedNumber: string = '';
+    let temp: string = '';
   
     for (let index = 0; index < number.length && index < 16; index++) {
       if (index > 0 && index % 4 === 0) {
-        formattedNumber += ' ';
+        temp += ' ';
       }
-      formattedNumber += number[index];
+      temp += number[index];
+      console.log(number[index])
     }
   
-    cardNumber.innerText = formattedNumber;
-    formNumber.value = formattedNumber;
+    cardNumber.innerText = temp;
+    formNumber.value = temp;
   });
 
 
