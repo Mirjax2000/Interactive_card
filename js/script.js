@@ -1,7 +1,7 @@
 "use strict";
 (() => {
-    const cardCvc = document.getElementById("cardCvc"), cardNumber = document.getElementById("cardNumber"), cardName = document.getElementById("cardName"), cardExp = document.getElementById("cardExp"), form = document.getElementById("form"), thankYou = document.querySelector(".thank-you"), formName = document.getElementById("formName"), formNumber = document.getElementById("formNumber"), formMonth = document.getElementById("formMonth"), formYear = document.getElementById("formYear"), formCvc = document.getElementById("formCvc"), formSubmit = document.getElementById("formSubmit"), formArray = [formName, formNumber, formMonth, formYear, formCvc];
-    console.log(formArray);
+    const cardCvc = document.getElementById("cardCvc"), cardNumber = document.getElementById("cardNumber"), cardName = document.getElementById("cardName"), cardExp = document.getElementById("cardExp"), thankYou = document.querySelector(".thank-you"), form = document.getElementById("form"), formName = form.querySelector("#formName"), formNumber = form.querySelector("#formNumber"), formMonth = form.querySelector("#formMonth"), formYear = form.querySelector("#formYear"), formCvc = form.querySelector("#formCvc"), formSubmit = form.querySelector("#formSubmit"), formArray = [formName, formNumber, formMonth, formYear, formCvc];
+    // --- cardName ---
     formName.addEventListener("input", (e) => {
         let name = formName.value.replace(/[^a-zA-Z\s]/g, "");
         name = name.replace(/\s+/g, " ");
@@ -12,6 +12,7 @@
         cardName.innerText = temp;
         formName.value = temp;
     });
+    // --- cardNumber ---
     formNumber.addEventListener("input", (e) => {
         let number = formNumber.value.replace(/\D/g, ""); // Odstraní všechny nečíselné znaky
         let temp = "";
@@ -23,24 +24,37 @@
         }
         cardNumber.innerText = temp;
         formNumber.value = temp;
-    });
-    const string = "1234567890123456";
-    let result = "";
-    for (let index = 0; index < string.length; index++) {
-        if (index % 4 === 0) {
-            result += " ";
+        if (formNumber.value.length === 0) {
+            cardNumber.innerText = "0000 0000 0000 0000";
         }
-        result += string[index];
-    }
+    });
+    // --- cardCvc ---
+    formCvc.addEventListener("input", (e) => {
+        let number = formCvc.value;
+        let temp = "";
+        for (let index = 0; index < number.length && index < 3; index++) {
+            temp += number[index];
+        }
+        cardCvc.innerText = temp;
+        formCvc.value = temp;
+        if (formCvc.value.length === 0) {
+            cardCvc.innerText = "000";
+        }
+    });
     form.addEventListener("submit", (e) => {
         let isValid = true;
         e.preventDefault();
         formArray.forEach((input) => {
+            const errorElement = input.nextElementSibling;
             if (input.value.length === 0) {
                 isValid = false;
-                const errorElement = input.nextElementSibling;
+                input.classList.add("error");
                 errorElement.innerText = "Cant be empty";
                 errorElement.setAttribute("data-visible", "true");
+            }
+            else {
+                errorElement.setAttribute("data-visible", "false");
+                input.classList.remove("error");
             }
         });
         if (isValid) {
