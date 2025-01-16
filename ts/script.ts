@@ -146,24 +146,22 @@
       expError.setAttribute("data-visible", "false");
       formMonth.classList.remove("error");
       formYear.classList.remove("error");
-      // --- month---
-      if (Number(formMonth.value) > 12) {
-        formMonth.classList.add("error");
+      // --- month year---
+      if (Number(formMonth.value) > 12 || Number(formYear.value) < 25) {
         expError.setAttribute("data-visible", "true");
         expError.innerText = "Not Valid";
         isValid = false;
+
+        if (Number(formMonth.value) > 12) {
+          formMonth.classList.add("error");
+        }
+
+        if (Number(formYear.value) < 25) {
+          formYear.classList.add("error");
+        }
       } else {
         expError.setAttribute("data-visible", "false");
         formMonth.classList.remove("error");
-      }
-      // --- Year---
-      if (Number(formYear.value) < 25) {
-        formYear.classList.add("error");
-        expError.setAttribute("data-visible", "true");
-        expError.innerText = "Not Valid";
-        isValid = false;
-      } else {
-        expError.setAttribute("data-visible", "false");
         formYear.classList.remove("error");
       }
     }
