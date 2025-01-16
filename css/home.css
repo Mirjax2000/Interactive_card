@@ -224,11 +224,11 @@ input[type=number] {
   position: relative;
 }
 
-.card__back, .card__back--cvc, .card__front, .card__front::before, .card__front::after, .card__front--number, .card__front--flex, .form__credential__date--month .form__label {
+.card__back, .card__back--cvc, .card__front, .card__front::before, .card__front::after, .card__front--number, .card__front__flex, .form__credential__date--month .form__label {
   position: absolute;
 }
 
-.card__front--number, .card__front--flex {
+.card__front--number, .card__front__flex {
   text-shadow: 1px 1px 1px black;
 }
 
@@ -260,7 +260,7 @@ input[type=number] {
   flex: 1;
 }
 
-.card, .card__front--number, .card__front--flex, .form, .form__input, .form__submit, .thank-you {
+.card, .card__front--number, .card__front__flex, .form, .form__input, .form__submit, .thank-you {
   width: 100%;
 }
 
@@ -379,7 +379,7 @@ input[type=number] {
   letter-spacing: 0.1111111111em;
   bottom: 2.7777777778em;
 }
-.card__front--flex {
+.card__front__flex {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -387,6 +387,12 @@ input[type=number] {
   bottom: 2.2222222222em;
   padding-inline: 2.1111111111em 2.2222222222em;
   letter-spacing: 0.1428555556em;
+}
+.card__front__flex__expire > * {
+  display: inline-block;
+}
+.card__front__flex__expire--month, .card__front__flex__expire--year {
+  width: 2ch;
 }
 
 .form {

@@ -47,9 +47,13 @@
             <p class="card__front--number" id="cardNumber">
               0000 0000 0000 0000
             </p>
-            <div class="card__front--flex">
-              <p class="card__front--name" id="cardName">FRANTA PÍNA</p>
-              <p class="card__front--expire" id="cardExp">00/00</p>
+            <div class="card__front__flex">
+              <p class="card__front__flex--name" id="cardName">FRANTA PÍNA</p>
+              <div class="card__front__flex__expire">
+                <p class="card__front__flex__expire--month" id="cardMonth">00</p>
+                <p class="card__front__flex__expire">/</p>
+                <p class="card__front__flex__expire--year" id="cardYear">00</p>
+              </div>
             </div>
           </div>
         </div>
@@ -80,13 +84,14 @@
               <!-- month -->
               <div class="form__credential__date--month">
                 <label class="form__label" for="formMonth">EXP.DATE(MM/YY)</label>
-                <input class="form__input" id="formMonth" type="number" placeholder="MM" />
-                <p class="form__error" data-visible="false">ERROR</p>
+                <input class="form__input" id="formMonth" type="text" placeholder="MM" />
+                <p class="form__error" id="expError" data-visible="false">ERROR</p>
               </div>
               <!-- year -->
               <div class="form__credential__date--year">
                 <label class="form__label" for="formYear">Year</label>
-                <input class="form__input" id="formYear" type="number" placeholder="YY" />
+                <input class="form__input" id="formYear" type="text" placeholder="YY" />
+                <!-- vypnuto -->
                 <p class="form__error" data-visible="false">ERROR</p>
               </div>
             </div>
