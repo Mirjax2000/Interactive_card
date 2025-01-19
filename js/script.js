@@ -116,7 +116,7 @@
             const formError = formNumber.nextElementSibling;
             formNumber.classList.add("error");
             formError.setAttribute("data-visible", "true");
-            formError.innerText = "Must be 12 numbers!";
+            formError.innerText = "Must be 16 numbers!";
             isValid = false;
         }
         else {

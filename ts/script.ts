@@ -114,7 +114,7 @@
   form.addEventListener("submit", (e) => {
     let isValid: boolean = true;
     e.preventDefault();
-    
+
     // --- formName ---
     if (formName.value.length === 0) {
       const formError = formName.nextElementSibling as HTMLParagraphElement;
@@ -139,7 +139,7 @@
       const formError = formNumber.nextElementSibling as HTMLParagraphElement;
       formNumber.classList.add("error");
       formError.setAttribute("data-visible", "true");
-      formError.innerText = "Must be 12 numbers!";
+      formError.innerText = "Must be 16 numbers!";
       isValid = false;
     } else {
       const formError = formNumber.nextElementSibling as HTMLParagraphElement;
