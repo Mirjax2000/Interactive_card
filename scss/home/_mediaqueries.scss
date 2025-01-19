@@ -2,4 +2,80 @@
 @use "../partials/assembler" as *;
 
 /* --- media queries --- */
-// @include mq-default-min-width(em(501, 16)) {}
+
+@include mq-default-min-width(em(1101, 16)) {
+  /* --- root css --- */
+
+  /* --- desktop --- */
+  :root {
+    --font-size: #{$font-size-100};
+    --font-size-label: #{$font-size-label-lg};
+    --font-size-cvc: #{$font-size-cvc-lg};
+    --font-size-inner: #{$font-size-inner-lg};
+    --font-size-cardnum: #{$font-size-cardnum-lg};
+    --font-size-cardname: #{$font-size-cardname-lg};
+    --font-size-error: #{$font-size-error-lg};
+    --font-size-submit: #{$font-size-submit-lg};
+    --font-size-thank-you: #{$font-size-thank-you-lg};
+    --font-size-content: #{$font-size-content-lg};
+    --font-size-continue: #{$font-size-continue-lg};
+  }
+
+  .submit__card {
+    flex-direction: row;
+    justify-content: center;
+
+    & .card {
+      flex: 1;
+      height: 100svh;
+      background-image: url("#{$img-path}/bg-main-desktop.png");
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &__wrapper {
+        height: em(520, 16);
+        width: 100%;
+      }
+
+      &__back,
+      &__front {
+        width: em(447, 16);
+        height: em(245, 16);
+        inset: auto;
+      }
+
+      &__back {
+        right: -40%;
+        bottom: 0;
+      }
+
+      &__front {
+        right: -25%;
+        top: 0;
+      }
+    }
+
+    & .form,
+    & .thank-you {
+      flex: 2;
+      margin-top: 0;
+    }
+  }
+}
+
+@include mq-default-min-width(em(1301, 16)) {
+  .submit__card {
+    & .card {
+      &__back {
+        right: -40%;
+        bottom: 0;
+      }
+
+      &__front {
+        right: -25%;
+        top: 0;
+      }
+    }
+  }
+}

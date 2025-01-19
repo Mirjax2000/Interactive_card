@@ -4,12 +4,338 @@
 /* --- home main --- */
 .home {
   background-color: $clr-body;
-  font-family: $font-karla, serif;
-  color: $clr15;
+  font-family: $font-family;
+  font-weight: 500;
+}
+
+.black-hole {
+  @include black-hole;
 }
 
 .container {
-  @include container($min-width, $max-width, 1em);
+  @include container($min-width, $max-width, 0);
   @extend %auto-margin;
-  @extend %position-relative;
+  @extend %bck-color10;
+}
+
+.submit__card {
+  @include flex(flex-start, center);
+  @extend %auto-margin;
+
+  height: 100svh;
+  flex-direction: column;
+}
+
+// --- card ---
+.card {
+  @extend %width-full;
+  @extend %no-selection;
+  @extend %text-color10;
+
+  min-height: em(240, 16);
+  background: $linear-gradient;
+
+  background: {
+    image: url("#{$img-path}/bg-main-mobile.png");
+    position: top left;
+    size: cover;
+    repeat: no-repeat;
+  }
+
+  &__wrapper {
+    @extend %position-relative;
+    @extend %auto-margin;
+
+    max-width: em(500, 16);
+    height: 100%;
+  }
+
+  &__back {
+    @extend %card-styling-sm;
+    @extend %position-absolute;
+
+    top: 2em;
+    right: 1em;
+    background-image: url("#{$img-path}/bg-card-back.png");
+    z-index: 10;
+
+    &--cvc {
+      @extend %position-absolute;
+
+      font-size: var(--font-size-cvc); // 9px
+      top: em(73, 9);
+      right: em(37, 9);
+      letter-spacing: em(1.2857, 9);
+      line-height: em(11, 9);
+    }
+  }
+
+  &__front {
+    @extend %card-styling-sm;
+    @extend %position-absolute;
+
+    bottom: -2.4em;
+    left: 1em;
+    background-image: url("#{$img-path}/bg-card-front.png");
+    z-index: 20;
+
+    &::before {
+      @extend %position-absolute;
+      @extend %card-marks;
+      @extend %bck-color10;
+
+      width: em(30, 16);
+      top: em(18, 16);
+      left: em(19, 16);
+    }
+
+    &::after {
+      @extend %position-absolute;
+      @extend %card-marks;
+
+      width: em(14, 16);
+      top: em(26, 16);
+      left: em(60, 16);
+      border: 1px solid white;
+    }
+
+    &--number {
+      @extend %position-absolute;
+      @extend %width-full;
+      @extend %text-shadow;
+
+      font-size: var(--font-size-cardnum); // 18px
+      padding-inline: em(19, 18) em(27, 18);
+      letter-spacing: em(2, 18);
+      bottom: em(50, 18);
+    }
+
+    &__flex {
+      @include flex(space-between, center);
+      @extend %position-absolute;
+      @extend %width-full;
+      @extend %text-shadow;
+
+      font-size: var(--font-size-cardname); // 9px
+      bottom: em(20, 9);
+      padding-inline: em(19, 9) em(20, 9);
+      letter-spacing: em(1.2857, 9);
+
+      &__expire {
+        & > * {
+          display: inline-block;
+        }
+
+        &--month,
+        &--year {
+          width: 2ch;
+        }
+      }
+    }
+  }
+}
+
+// --- form ---
+.form {
+  @extend %width-full;
+
+  margin-top: em(90, 16);
+
+  &__wrapper {
+    @extend %auto-margin;
+
+    max-width: em(380, 16);
+  }
+
+  &__input {
+    @extend %width-full;
+    @extend %cursor-pointer;
+    @extend %text-color14;
+
+    font-size: var(--font-size-inner); // 18px
+    line-height: em(23, 18);
+    padding: em(11, 18) em(16, 18);
+    border-radius: em(8, 18);
+    outline: 1px solid $clr15;
+
+    &::placeholder {
+      color: $clr15;
+    }
+
+    &:focus {
+      outline: 1px solid $clr16;
+    }
+
+    &.error {
+      outline: 1px solid $clr11;
+    }
+  }
+
+  &__label {
+    @extend %display-block;
+    @extend %text-color14;
+
+    font-size: var(--font-size-label); // 12px
+    margin-bottom: em(9, 12);
+    text-transform: uppercase;
+    letter-spacing: em(2, 12);
+    line-height: em(15, 12);
+  }
+
+  &__error {
+    font-size: var(--font-size-error); // 12px
+    color: $clr11;
+    margin-block: em(5, 12) em(3, 12);
+    white-space: nowrap;
+
+    &[data-visible="false"] {
+      color: transparent;
+    }
+
+    &[data-visible="true"] {
+      color: $clr11;
+    }
+  }
+
+  &__credential {
+    @include flex(space-between, center);
+
+    gap: em(11, 16);
+
+    &__date {
+      @include flex(space-between, flex-end);
+      @extend %position-relative;
+      @extend %flex-1;
+
+      gap: em(8, 16);
+
+      &--month {
+        @extend %flex-1;
+
+        & .form__label {
+          @extend %position-absolute;
+
+          top: 0;
+          left: 0;
+        }
+      }
+
+      &--year {
+        @extend %flex-1;
+
+        & .form__label,
+        & .form__error {
+          text-indent: -9999px;
+          color: transparent;
+        }
+      }
+    }
+
+    &__cvc {
+      @extend %flex-1;
+    }
+  }
+
+  &__submit {
+    @extend %width-full;
+    @extend %auto-margin;
+    @extend %cursor-pointer;
+    @extend %text-color10;
+    @extend %bck-color14;
+    @extend %shadow-box3;
+
+    font-size: var(--font-size-submit); // 18px
+    margin-top: em(10, 18);
+    padding-block: em(15, 18);
+    border: none;
+    border-radius: em(8, 18);
+    line-height: em(23, 18);
+    transition:
+      0.1s ease-in-out transform,
+      0.1s ease-in-out background-color;
+
+    &:hover,
+    &:focus {
+      @extend %bck-black;
+    }
+
+    &:active {
+      @extend %shadow-box2;
+      @extend %bck-black;
+
+      transform: translateY(1px);
+    }
+  }
+}
+
+.thank-you {
+  @extend %width-full;
+
+  text-align: center;
+  margin-top: em(90, 16);
+
+  &__wrapper {
+    @extend %auto-margin;
+
+    max-width: em(380, 16);
+  }
+
+  &__accept {
+    @extend %auto-margin;
+
+    width: em(80, 16);
+    margin-bottom: em(35, 16);
+    aspect-ratio: 1/1;
+    background: {
+      position: center center;
+      size: contain;
+      repeat: no-repeat;
+      image: url("#{$img-path}/icon-complete.svg");
+    }
+  }
+
+  &__title {
+    @extend %text-color14;
+    @extend %no-selection;
+
+    font-size: var(--font-size-thank-you); // 18px
+    margin-bottom: em(29, 18);
+    line-height: em(23, 18);
+  }
+
+  &__content {
+    @extend %text-color13;
+    @extend %no-selection;
+
+    font-size: var(--font-size-content); // 18px
+    line-height: em(23, 18);
+    margin-bottom: em(48, 18);
+  }
+
+  &__continue {
+    @extend %display-block;
+    @extend %border-radius;
+    @extend %text-color10;
+    @extend %bck-color14;
+    @extend %shadow-box3;
+
+    font-size: var(--font-size-continue); // 18px
+    line-height: em(23, 18);
+    padding-block: em(15, 18);
+    transition:
+      0.1s ease-in-out transform,
+      0.1s ease-in-out background-color;
+
+    &:hover,
+    &:focus {
+      @extend %bck-black;
+    }
+
+    &:active {
+      @extend %shadow-box2;
+      @extend %bck-black;
+
+      transform: translateY(1px);
+    }
+  }
 }

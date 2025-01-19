@@ -13,23 +13,103 @@
   <link as="font" crossorigin="anonymous" href="./assets/webfonts/Font-face/static/SpaceGrotesk-Medium.woff2"
     rel="preload" type="font/woff2" />
   <link href="./assets/img/favicon-32x32.png" rel="shortcut icon" type="image/x-icon" />
+  <link href="./assets/img/bg-card-back.png" rel="prefetch" as="image" />
+  <link href="./assets/img/bg-card-front.png" rel="prefetch" as=" image" />
+  <link href="./assets/img/icon-complete.svg" rel="prefeth" as="image" />
+  <link href="./assets/img/bg-main-desktop.png" rel="prefetch" as="image" />
+  <link href="./assets/img/bg-main-mobile.png" rel="prefetch" as="image" />
   <style>
     @font-face {
       font-family: Grotesk;
-      src: url("./assets/webfonts/Font-face/static/SpaceGrotesk-Medium.woff2") format("woff2"),
+      src:
+        url("./assets/webfonts/Font-face/static/SpaceGrotesk-Medium.woff2") format("woff2"),
         url("./assets/webfonts/Font-face/static/SpaceGrotesk-Medium.ttf") format("truetype");
-      font-weight: 400;
+      font-weight: 500;
       font-style: normal;
       font-display: swap;
     }
   </style>
 
   <link href="./css/home.css" rel="stylesheet" />
-
 </head>
 <!--body-->
 
 <body class="home">
+  <div class="container">
+    <section class="submit__card">
+      <!-- card -->
+      <div class="card">
+        <div class="card__wrapper">
+          <div class="card__back">
+            <p class="card__back--cvc" id="cardCvc">000</p>
+          </div>
+          <div class="card__front">
+            <p class="card__front--number" id="cardNumber">
+              0000 0000 0000 0000
+            </p>
+            <div class="card__front__flex">
+              <p class="card__front__flex--name" id="cardName">FRANTA PÍNA</p>
+              <div class="card__front__flex__expire">
+                <p class="card__front__flex__expire--month" id="cardMonth">00</p>
+                <p class="card__front__flex__expire">/</p>
+                <p class="card__front__flex__expire--year" id="cardYear">00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- thank you -->
+      <div class="thank-you black-hole">
+        <div class="thank-you__wrapper">
+          <div class="thank-you__accept"></div>
+          <h1 class="thank-you__title">THANK YOU</h1>
+          <p class="thank-you__content">We`ve added your card details</p>
+          <a href="#" class="thank-you__continue">Continue</a>
+        </div>
+      </div>
+      <!-- form -->
+      <form class="form" id="form">
+        <div class="form__wrapper">
+          <!-- card name -->
+          <label class="form__label" for="formName">CARDHOLDER NAME</label>
+          <input class="form__input" id="formName" type="text" placeholder="e.g. Franta Pína" />
+          <p class="form__error" data-visible="false">ERROR</p>
+          <!-- card number -->
+          <label class="form__label" for="formNumber">CARD NUMBER</label>
+          <input class="form__input" id="formNumber" type="text" placeholder="e.g. 1234 5678 9123 000" />
+          <p class="form__error" data-visible="false">ERROR</p>
+          <!-- card date -->
+          <div class="form__credential">
+            <div class="form__credential__date">
+              <!-- month -->
+              <div class="form__credential__date--month">
+                <label class="form__label" for="formMonth">EXP.DATE(MM/YY)</label>
+                <input class="form__input" id="formMonth" type="text" placeholder="MM" />
+                <p class="form__error" id="expError" data-visible="false">ERROR</p>
+              </div>
+              <!-- year -->
+              <div class="form__credential__date--year">
+                <label class="form__label" for="formYear">Year</label>
+                <input class="form__input" id="formYear" type="text" placeholder="YY" />
+                <!-- vypnuto -->
+                <p class="form__error" data-visible="false">ERROR</p>
+              </div>
+            </div>
+            <!-- card cvc -->
+            <div class="form__credential__cvc">
+              <label class="form__label" for="formCvc">CVC</label>
+              <input class="form__input" id="formCvc" type="number" placeholder="e.g. 123" />
+              <p class="form__error" data-visible="false">ERROR</p>
+            </div>
+          </div>
+          <!-- submit -->
+          <button class="form__submit" type="formSubmit" id="submit">
+            Confirm
+          </button>
+        </div>
+      </form>
+    </section>
+  </div>
 
   <script src="js/script.js"></script>
 </body>
