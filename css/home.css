@@ -428,6 +428,7 @@ input[type=number] {
   font-size: var(--font-size-error);
   color: #ff5252;
   margin-block: 0.4166666667em 0.25em;
+  white-space: nowrap;
 }
 .form__error[data-visible=false] {
   color: transparent;

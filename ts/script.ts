@@ -11,9 +11,7 @@
     formMonth = form.querySelector("#formMonth") as HTMLInputElement,
     formYear = form.querySelector("#formYear") as HTMLInputElement,
     formCvc = form.querySelector("#formCvc") as HTMLInputElement,
-    expError = form.querySelector("#expError") as HTMLParagraphElement,
-    formSubmit = form.querySelector("#formSubmit") as HTMLButtonElement,
-    formArray = [formName, formNumber, formCvc];
+    expError = form.querySelector("#expError") as HTMLParagraphElement;
 
   // --- cardName ---
   formName.addEventListener("input", (e) => {
@@ -116,23 +114,62 @@
   form.addEventListener("submit", (e) => {
     let isValid: boolean = true;
     e.preventDefault();
-    // --- for each ---
-    formArray.forEach((input) => {
-      const formError = input.nextElementSibling as HTMLParagraphElement;
-      if (input.value.length === 0) {
-        input.classList.add("error");
-        formError.setAttribute("data-visible", "true");
-        formError.innerText = "Cant be empty!";
-        isValid = false;
-      } else {
-        input.classList.remove("error");
-        formError.setAttribute("data-visible", "false");
-      }
-    });
+    
+    // --- formName ---
+    if (formName.value.length === 0) {
+      const formError = formName.nextElementSibling as HTMLParagraphElement;
+      formName.classList.add("error");
+      formError.setAttribute("data-visible", "true");
+      formError.innerText = "Cant be empty!";
+      isValid = false;
+    } else {
+      const formError = formName.nextElementSibling as HTMLParagraphElement;
+      formName.classList.remove("error");
+      formError.setAttribute("data-visible", "false");
+    }
 
+    // formNumber
+    if (formNumber.value.length === 0) {
+      const formError = formNumber.nextElementSibling as HTMLParagraphElement;
+      formNumber.classList.add("error");
+      formError.setAttribute("data-visible", "true");
+      formError.innerText = "Cant be empty!";
+      isValid = false;
+    } else if (formNumber.value.length < 19) {
+      const formError = formNumber.nextElementSibling as HTMLParagraphElement;
+      formNumber.classList.add("error");
+      formError.setAttribute("data-visible", "true");
+      formError.innerText = "Must be 12 numbers!";
+      isValid = false;
+    } else {
+      const formError = formNumber.nextElementSibling as HTMLParagraphElement;
+      formNumber.classList.remove("error");
+      formError.setAttribute("data-visible", "false");
+    }
+
+    // formCvc
+    if (formCvc.value.length === 0) {
+      const formError = formCvc.nextElementSibling as HTMLParagraphElement;
+      formCvc.classList.add("error");
+      formError.setAttribute("data-visible", "true");
+      formError.innerText = "Cant be empty!";
+      isValid = false;
+    } else if (formCvc.value.length < 3) {
+      const formError = formCvc.nextElementSibling as HTMLParagraphElement;
+      formCvc.classList.add("error");
+      formError.setAttribute("data-visible", "true");
+      formError.innerText = "Must be 3 numbers!";
+      isValid = false;
+    } else {
+      const formError = formCvc.nextElementSibling as HTMLParagraphElement;
+      formCvc.classList.remove("error");
+      formError.setAttribute("data-visible", "false");
+    }
+
+    // --- Month ---
     if (formMonth.value.length === 0 || formYear.value.length === 0) {
       expError.setAttribute("data-visible", "true");
-      expError.innerText = "Cant be empty";
+      expError.innerText = "Cant be empty!";
       isValid = false;
 
       if (formMonth.value.length === 0) {
@@ -146,6 +183,7 @@
       expError.setAttribute("data-visible", "false");
       formMonth.classList.remove("error");
       formYear.classList.remove("error");
+
       // --- month year---
       if (Number(formMonth.value) > 12 || Number(formYear.value) < 25) {
         expError.setAttribute("data-visible", "true");

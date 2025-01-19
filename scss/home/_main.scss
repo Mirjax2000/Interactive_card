@@ -186,6 +186,7 @@
     font-size: var(--font-size-error); // 12px
     color: $clr11;
     margin-block: em(5, 12) em(3, 12);
+    white-space: nowrap;
 
     &[data-visible="false"] {
       color: transparent;
