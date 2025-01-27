@@ -2,6 +2,10 @@
 
 This project is a Front-End implementation of a payment gateway component inspired by a challenge from Frontend Mentor. The primary focus is to enhance coding practices and explore new tools and methodologies. Below are the key highlights of the project:
 
+![preview](./assets/img/preview.jpg)
+
+
+
 🚀 Features
 
 1. SASS with BEM Methodology
